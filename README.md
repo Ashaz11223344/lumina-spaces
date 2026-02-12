@@ -9,7 +9,7 @@
 
 <h2>🚀 Demo</h2>
 
-[Coming Soon – Public demo deployment in progress.](Coming Soon – Public demo deployment in progress.)
+[Coming Soon – Public demo deployment in progress.]
 
   
   
