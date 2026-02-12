@@ -1,9 +1,7 @@
 <p align="center">
   <img src="public/lumina-banner.svg" alt="Lumina Spaces Banner" />
 </p>
-<h1 align="center" id="title">Lumina Spaces</h1>
 
-<p align="center"><img src="https://socialify.git.ci/Ashaz11223344/lumina-spaces/image?description=1&amp;font=Inter&amp;language=1&amp;name=1&amp;owner=1&amp;pattern=Solid&amp;theme=Dark" alt="project-image"></p>
 
 <p id="description">Lumina Spaces is an advanced interior redesign engine that transforms static room images into structurally accurate build-ready design concepts. It preserves architectural geometry while generating radically distinct layout interpretations. Designed with spatial intelligenceand actionable asset grounding Lumina bridges creative exploration with real-world feasibility.</p>
 
