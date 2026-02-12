@@ -1,0 +1,7 @@
+{
+  "name": "Lumina Spaces",
+  "description": "AI-powered room redesign application with intelligent masking and style orchestration.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

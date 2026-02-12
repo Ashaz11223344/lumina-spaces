@@ -1,0 +1,267 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lumina Spaces - Organic AI Redesign</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet" />
+<style>
+@keyframes fade-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-fade-down {
+  animation: fade-down 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out forwards;
+}
+  </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Space Grotesk', 'sans-serif'],
+            },
+            colors: {
+              background: '#0F120E',
+              primary: '#6A7A5A',
+              secondary: '#AAC48C',
+              tertiary: '#8DAF98',
+              surface: '#1A1E18',
+              accent: '#D7CBB2',
+              pale: '#BED2BA',
+              glass: 'rgba(141, 175, 152, 0.15)',
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'float': 'float 6s ease-in-out infinite',
+              'glow': 'glow 3s ease-in-out infinite alternate',
+              'blob': 'blob 20s infinite',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' },
+              },
+              glow: {
+                '0%': { boxShadow: '0 0 10px rgba(170, 196, 140, 0.2)' },
+                '100%': { boxShadow: '0 0 25px rgba(170, 196, 140, 0.6)' },
+              },
+              blob: {
+                '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                '100%': { transform: 'translate(0px, 0px) scale(1)' },
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        background-color: #0F120E;
+        color: #E2E8F0;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+      }
+      ::-webkit-scrollbar { width: 6px; height: 6px; }
+      ::-webkit-scrollbar-track { background: #0F120E; }
+      ::-webkit-scrollbar-thumb { background: #6A7A5A; border-radius: 10px; }
+      ::-webkit-scrollbar-thumb:hover { background: #AAC48C; }
+      .glass-panel { background: rgba(26, 30, 24, 0.75); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37); }
+      .glass-card { background: rgba(215, 203, 178, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.05); transition: all .3s ease; }
+      .glass-card:hover { background: rgba(255,255,255,0.08); border-color: rgba(106, 122, 90, 0.3); box-shadow: 0 0 20px rgba(141, 175, 152, 0.3); }
+      .text-glow { text-shadow: 0 0 10px rgba(170, 196, 140, 0.5); }
+
+      /* Smooth, organic gradient background */
+      .bg-animated {
+        position: fixed;
+        inset: 0;
+        z-index: -20;
+        background: radial-gradient(1200px 800px at 10% 20%, rgba(106, 122, 90, 0.15), transparent 60%),
+                    radial-gradient(900px 700px at 90% 30%, rgba(141, 175, 152, 0.12), transparent 60%),
+                    radial-gradient(1000px 900px at 50% 90%, rgba(170, 196, 140, 0.1), transparent 60%),
+                    linear-gradient(120deg, #0F120E, #1A1E18 40%, #2A2F25 100%);
+        background-size: 120% 120%;
+        animation: gradientShift 30s ease-in-out infinite;
+        will-change: transform, background-position, background-size;
+      }
+
+      @keyframes gradientShift {
+        0%   { background-position: 0% 0%; filter: saturate(100%); }
+        25%  { background-position: 50% 20%; }
+        50%  { background-position: 100% 50%; filter: saturate(110%); }
+        75%  { background-position: 50% 80%; }
+        100% { background-position: 0% 0%; filter: saturate(100%); }
+      }
+
+      /* Subtle particles canvas sits above gradient */
+      #particles {
+        position: fixed;
+        inset: 0;
+        z-index: -10;
+        pointer-events: none;
+        opacity: 0.3;
+      }
+
+      /* Respect reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        .bg-animated { animation: none; }
+      }
+    </style>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+          "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+          "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+          "react/": "https://aistudiocdn.com/react@^19.2.0/",
+          "react": "https://aistudiocdn.com/react@^19.2.0",
+          "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+        }
+      }
+    </script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <!-- Animated background layers -->
+    <div class="bg-animated"></div>
+    <canvas id="particles"></canvas>
+
+    <div id="root"></div>
+
+    <script type="module">
+      import React, { useEffect } from 'react';
+      import { createRoot } from 'react-dom/client';
+
+      function useParticles() {
+        useEffect(() => {
+          const canvas = document.getElementById('particles');
+          const ctx = canvas.getContext('2d');
+          let width = (canvas.width = window.innerWidth);
+          let height = (canvas.height = window.innerHeight);
+
+          const DPR = Math.min(window.devicePixelRatio || 1, 2);
+          canvas.width = width * DPR;
+          canvas.height = height * DPR;
+          ctx.scale(DPR, DPR);
+
+          const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+          // Organic particle configuration
+          const COUNT = prefersReduced ? 0 : Math.floor((width * height) / 45000); 
+          const SPEED = 0.08;
+          const SIZE = 1.0;
+
+          const particles = Array.from({ length: COUNT }, () => ({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            vx: (Math.random() - 0.5) * SPEED,
+            vy: (Math.random() - 0.5) * SPEED,
+            r: SIZE + Math.random() * 0.5,
+            a: 0.2 + Math.random() * 0.2,
+          }));
+
+          let raf = 0;
+          function draw() {
+            ctx.clearRect(0, 0, width, height);
+
+            // soft glow field
+            const g = ctx.createRadialGradient(width * 0.5, height * 0.6, 0, width * 0.5, height * 0.6, Math.max(width, height));
+            g.addColorStop(0, 'rgba(106, 122, 90, 0.05)');
+            g.addColorStop(0.6, 'rgba(215, 203, 178, 0.02)');
+            g.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            ctx.fillStyle = g;
+            ctx.fillRect(0, 0, width, height);
+
+            // particles
+            for (const p of particles) {
+              p.x += p.vx;
+              p.y += p.vy;
+
+              // gentle wrap
+              if (p.x < -10) p.x = width + 10;
+              if (p.x > width + 10) p.x = -10;
+              if (p.y < -10) p.y = height + 10;
+              if (p.y > height + 10) p.y = -10;
+
+              ctx.beginPath();
+              ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+              ctx.fillStyle = `rgba(215, 203, 178, ${p.a})`;
+              ctx.fill();
+            }
+
+            raf = requestAnimationFrame(draw);
+          }
+
+          function onResize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            canvas.width = width * DPR;
+            canvas.height = height * DPR;
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+            ctx.scale(DPR, DPR);
+          }
+
+          window.addEventListener('resize', onResize);
+          draw();
+
+          return () => {
+            cancelAnimationFrame(raf);
+            window.removeEventListener('resize', onResize);
+          };
+        }, []);
+      }
+
+      function App() {
+        useParticles();
+        return (
+          React.createElement('main', { className: 'relative min-h-screen flex flex-col items-center justify-center px-6' },
+            React.createElement('section', { className: 'glass-panel w-full max-w-4xl rounded-3xl p-10 animate-fade-in' },
+              React.createElement('h1', { className: 'font-display font-bold text-4xl md:text-5xl mb-6 text-[#AAC48C]' }, 'Lumina Spaces'),
+              React.createElement('p', { className: 'text-[#D7CBB2]/80 max-w-2xl leading-relaxed text-lg' },
+                'Reimagining architecture through an organic lens. Earthy tones and natural flow create a space for visionaries.'
+              )
+            )
+          )
+        );
+      }
+
+      const root = createRoot(document.getElementById('root'));
+      root.render(React.createElement(App));
+    </script>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
