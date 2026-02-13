@@ -9,9 +9,9 @@
 
 <h2>🚀 Demo</h2>
 
-...
+```
 luminaspaces.qzz.io
-...
+```
 (Product will not work as api key must be needed)
   
   
